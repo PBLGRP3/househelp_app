@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import './homescreen.dart';
+import 'homepage/homescreen.dart';
 
 class introPage extends StatefulWidget {
   @override
