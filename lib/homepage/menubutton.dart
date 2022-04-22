@@ -4,8 +4,20 @@ import 'buttoncontent.dart';
 class menubutton extends StatelessWidget {
   final String buttontitle;
   final String buttonimage;
+  Widget menuoption;
 
-  menubutton(this.buttontitle, this.buttonimage);
+  menubutton(
+      @required this.buttontitle, @required this.buttonimage, this.menuoption);
+
+  void selectoption(BuildContext ctx) {
+    Navigator.of(ctx).push(
+      MaterialPageRoute(
+        builder: (_) {
+          return menuoption;
+        },
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +37,7 @@ class menubutton extends StatelessWidget {
           buttontitle,
           buttonimage,
         ),
-        onPressed: () => {},
+        onPressed: () => selectoption(context),
         splashColor: Colors.lightGreen,
       ),
     );

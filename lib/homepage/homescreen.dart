@@ -3,6 +3,7 @@ import 'buttoncontent.dart';
 import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
 import '../dashboard.dart';
 import './menubutton.dart';
+import '../ExpDate/exp_screen.dart';
 
 class homescreen extends StatelessWidget {
   @override
@@ -39,14 +40,17 @@ class homescreen extends StatelessWidget {
               menubutton(
                 "EXPIRY DATE TRACKER",
                 "assets/images/medicine (1).png",
+                ExpScreen(),
               ),
               menubutton(
                 "GROCERY TRACKER",
                 "assets/images/grocery (1).png",
+                ExpScreen(),
               ),
               menubutton(
                 "         RECIPES",
                 "assets/images/cooking.png",
+                ExpScreen(),
               )
             ],
           ),
