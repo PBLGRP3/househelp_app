@@ -71,10 +71,10 @@ class dashboard extends StatelessWidget {
 class _SliderMenuItem extends StatelessWidget {
   final String title;
   final IconData iconData;
-  final Function(String)? onTap;
+  final Function onTap;
 
   const _SliderMenuItem(
-      {required this.title, required this.iconData, required this.onTap});
+      {@required this.title, @required this.iconData, @required this.onTap});
 
   @override
   Widget build(BuildContext context) {
