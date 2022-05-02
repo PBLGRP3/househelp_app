@@ -4,6 +4,7 @@ import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
 import '../dashboard.dart';
 import './menubutton.dart';
 import '../ExpDate/exp_screen.dart';
+import '../Recipe/recipes.dart';
 
 class homescreen extends StatelessWidget {
   @override
@@ -50,7 +51,8 @@ class homescreen extends StatelessWidget {
               menubutton(
                 "         RECIPES",
                 "assets/images/cooking.png",
-                ExpScreen(),
+                //Recipes(),
+                Recipes(),
               )
             ],
           ),

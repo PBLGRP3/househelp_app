@@ -10,6 +10,6 @@ class medicine {
     @required this.name,
     @required this.expiry_date,
     this.id = 0,
-    @required this.add_date,
+    this.add_date,
   });
 }

@@ -56,6 +56,13 @@ flutter:
      - assets/images/medicine (1).png
      - assets/images/grocery (1).png
      - assets/images/cooking.png
+     - assets/images/R1.jpg
+     - assets/images/R2.jpg
+     - assets/images/R3.jpg
+     - assets/images/R4.jpg
+     - assets/images/R5.jpg
+     - assets/images/R6.jpg
+     - assets/images/R7.jpg
      
 
   # An image asset can refer to one or more resolution-specific "variants", see
