@@ -89,7 +89,7 @@ class grocery_list_view extends StatelessWidget {
                 ),
               ),
               trailing: Text(
-                "SAFE",
+                "${element.quantity}",
                 //'${element.add_date.day}',
                 style: TextStyle(
                   color: Colors.black,

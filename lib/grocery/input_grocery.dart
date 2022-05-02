@@ -11,13 +11,15 @@ class inputg extends StatefulWidget {
 
 class _inputgState extends State<inputg> {
   final nameController = TextEditingController();
+  final qController = TextEditingController();
   DateTime selectdate;
   void add() {
     final String enteredname = nameController.text;
-    if (enteredname.isEmpty || selectdate == null) {
+    final int enteredquantity = int.parse(qController.text);
+    if (enteredname.isEmpty) {
       return;
     }
-    widget.addgc(enteredname);
+    widget.addgc(enteredname, enteredquantity);
     Navigator.of(context).pop();
   }
 
@@ -62,6 +64,17 @@ class _inputgState extends State<inputg> {
                       titleInput = value;
                     },*/
             ),
+            TextField(
+              decoration: InputDecoration(
+                labelText: "quantity",
+                focusColor: Colors.lightGreen,
+              ),
+              controller: qController,
+              keyboardType: TextInputType.number,
+              /*onChanged: (value) {
+                      titleInput = value;
+                    },*/
+            ),
             /*TextField(
               decoration: InputDecoration(labelText: "amount"),
               controller: amountController,
@@ -78,7 +91,7 @@ class _inputgState extends State<inputg> {
               color: Colors.lightGreen,
               onPressed: add,
               child: Text(
-                "ADD MEDICINE",
+                "ADD GROCERY",
                 style: TextStyle(
                   fontFamily: "montessarat",
                   fontWeight: FontWeight.bold,

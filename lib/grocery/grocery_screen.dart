@@ -39,7 +39,7 @@ class _groceryscreenState extends State<groceryscreen> {
     return loaded_groceries;
   }
 
-  void addgrocery(String gname) {
+  void addgrocery(String gname, int gquantity) {
     Uri url = Uri.parse(
         'https://househelpapp-f9dd7-default-rtdb.firebaseio.com//groceries.json');
     http.post(
@@ -47,12 +47,14 @@ class _groceryscreenState extends State<groceryscreen> {
       body: json.encode({
         'title': gname,
         'addtime': DateTime.now().toIso8601String(),
+        'quantity': gquantity,
       }),
     );
 
     final new_grocery = grocery(
       addtime: DateTime.now(),
       title: gname,
+      quantity: gquantity,
     );
 
     setState(() {
@@ -87,7 +89,7 @@ class _groceryscreenState extends State<groceryscreen> {
         iconTheme: IconThemeData(color: Colors.green),
         elevation: 0,
         title: Text(
-          "EXPIRY DATE TRACKER",
+          "GROCERIES TRACKER",
           style: TextStyle(
             color: Colors.black,
             fontFamily: 'montessarat',

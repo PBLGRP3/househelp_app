@@ -6,5 +6,6 @@ class grocery {
   grocery({
     this.title,
     this.addtime,
+    this.quantity,
   });
 }
