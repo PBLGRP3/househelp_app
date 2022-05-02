@@ -140,22 +140,26 @@ class _ExpScreenState extends State<ExpScreen> {
     )
   ];
 
-  Future<void> fetchandset() async {
+  Future<List<medicine>> fetchandset() async {
     Uri url = Uri.parse(
         'https://househelpapp-f9dd7-default-rtdb.firebaseio.com//products.json');
 
     final response = await http.get(url);
     final extracted_data = json.decode(response.body) as Map<String, dynamic>;
-    final List<medicine> loaded_medicines = [];
+    List<medicine> loaded_medicines = [];
     extracted_data.forEach((prodId, prodData) {
       loaded_medicines.add(medicine(
-        id: int.parse(prodId),
+        //id: int.parse(prodId),
         name: prodData["name"],
-        expiry_date: prodData["expdate"],
+        expiry_date: DateTime.parse(
+          prodData["expdate"],
+        ),
       ));
+
+      //print("out successfully");
     });
 
-    medicine_list = loaded_medicines;
+    return loaded_medicines;
   }
 
   void addmedicine(DateTime expdate, String mname) {
@@ -197,10 +201,10 @@ class _ExpScreenState extends State<ExpScreen> {
   }
 
   @override
-  void initState() {
-    fetchandset();
-    super.initState();
-  }
+  //void initState() {
+  //fetchandset();
+  // super.initState();
+  //}
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -220,9 +224,27 @@ class _ExpScreenState extends State<ExpScreen> {
           ),
         ),
       ),
-      body: Padding(
+      body:
+          /*Padding(
         padding: const EdgeInsets.only(top: 15.0),
         child: medicine_list_view(medicine_list),
+      ),*/
+          FutureBuilder(
+        //initialData: [],
+        future: fetchandset(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            //print(snapshot.data[0].name);
+            return Padding(
+              padding: const EdgeInsets.only(top: 15.0),
+              child: medicine_list_view(snapshot.data),
+            );
+          } else if (snapshot.hasError) {
+            //print(snapshot.error);
+            return Text("error");
+          } else
+            return LinearProgressIndicator(value: null);
+        },
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),

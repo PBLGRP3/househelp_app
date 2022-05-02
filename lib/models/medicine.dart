@@ -7,7 +7,7 @@ class medicine {
   final DateTime add_date;
 
   medicine({
-    @required this.name,
+    @required this.name = "null",
     @required this.expiry_date,
     this.id = 0,
     this.add_date,

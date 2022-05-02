@@ -12,7 +12,7 @@ class medicine_list_view extends StatelessWidget {
   Widget build(BuildContext context) {
     return StickyGroupedListView<medicine, DateTime>(
       elements: _medi_list,
-      order: StickyGroupedListOrder.ASC,
+      order: StickyGroupedListOrder.DESC,
       groupBy: (medicine element) => DateTime(
         element.expiry_date.year,
         element.expiry_date.month,
@@ -56,47 +56,98 @@ class medicine_list_view extends StatelessWidget {
         ),
       ),
       itemBuilder: (_, medicine element) {
-        return Card(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12.0),
-          ),
-          elevation: 8.0,
-          margin: new EdgeInsets.symmetric(horizontal: 20.0, vertical: 6.0),
-          child: Container(
-            child: ListTile(
-              contentPadding:
-                  EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-              leading: Padding(
-                padding: const EdgeInsets.only(right: 40.0),
-                child: Text(
-                  "${element.expiry_date.difference(DateTime.now()).inDays}",
+        if (element.expiry_date.difference(DateTime.now()).inDays > 0) {
+          return Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12.0),
+            ),
+            elevation: 8.0,
+            margin: new EdgeInsets.symmetric(horizontal: 20.0, vertical: 6.0),
+            child: Container(
+              child: ListTile(
+                contentPadding:
+                    EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                leading: Padding(
+                  padding: const EdgeInsets.only(right: 40.0),
+                  child: Text(
+                    "${element.expiry_date.difference(DateTime.now()).inDays}",
+                    style: TextStyle(
+                      color: Colors.lightGreen,
+                      fontSize: 30,
+                      fontFamily: "montessarat",
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                title: Text(
+                  element.name,
                   style: TextStyle(
-                    color: Colors.lightGreen,
-                    fontSize: 30,
+                    color: Colors.black,
+                    fontFamily: "montessarat",
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                trailing: Text(
+                  "no day",
+                  //'${element.add_date.day}',
+                  style: TextStyle(
+                    color: Colors.black,
                     fontFamily: "montessarat",
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-              title: Text(
-                element.name,
-                style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: "montessarat",
-                  fontWeight: FontWeight.bold,
-                ),
+            ),
+          );
+        } else {
+          return Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12.0),
+              side: BorderSide(
+                color: Colors.red,
               ),
-              trailing: Text(
-                '${element.add_date.day}',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: "montessarat",
-                  fontWeight: FontWeight.bold,
+            ),
+            elevation: 8.0,
+            margin: new EdgeInsets.symmetric(horizontal: 20.0, vertical: 6.0),
+            child: Container(
+              child: ListTile(
+                contentPadding:
+                    EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                leading: Padding(
+                  padding: const EdgeInsets.only(right: 40.0),
+                  child: Text(
+                    "${element.expiry_date.difference(DateTime.now()).inDays}",
+                    style: TextStyle(
+                      color: Colors.red,
+                      fontSize: 30,
+                      fontFamily: "montessarat",
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                title: Text(
+                  element.name,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontFamily: "montessarat",
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                trailing: Text(
+                  "MEDICINE EXPIRED",
+                  //'${element.add_date.day}',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontFamily: "montessarat",
+                    fontWeight: FontWeight.bold,
+                    fontSize: 10,
+                  ),
                 ),
               ),
             ),
-          ),
-        );
+          );
+          ;
+        }
       },
     );
   }
