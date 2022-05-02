@@ -5,6 +5,7 @@ import '../dashboard.dart';
 import './menubutton.dart';
 import '../ExpDate/exp_screen.dart';
 import '../Recipe/recipes.dart';
+import '../grocery/grocery_screen.dart';
 
 class homescreen extends StatelessWidget {
   @override
@@ -46,7 +47,7 @@ class homescreen extends StatelessWidget {
               menubutton(
                 "GROCERY TRACKER",
                 "assets/images/grocery (1).png",
-                ExpScreen(),
+                groceryscreen(),
               ),
               menubutton(
                 "         RECIPES",

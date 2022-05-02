@@ -194,6 +194,7 @@ class _ExpScreenState extends State<ExpScreen> {
 
   void startAddNewMedicine(BuildContext ctx) {
     showModalBottomSheet(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         context: ctx,
         builder: (bCtx) {
           return input(addmedicine);

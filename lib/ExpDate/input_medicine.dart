@@ -143,6 +143,9 @@ class _inputState extends State<input> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
       elevation: 5,
       child: Container(
         padding: EdgeInsets.all(10),
@@ -150,7 +153,10 @@ class _inputState extends State<input> {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             TextField(
-              decoration: InputDecoration(labelText: "Title"),
+              decoration: InputDecoration(
+                labelText: "Title",
+                focusColor: Colors.lightGreen,
+              ),
               controller: nameController,
               keyboardType: TextInputType.text,
               /*onChanged: (value) {
@@ -173,26 +179,43 @@ class _inputState extends State<input> {
                       selectdate == null
                           ? "no date chosen :"
                           : DateFormat.yMd().format(selectdate),
+                      style: TextStyle(
+                        color: Colors.lightGreen,
+                        fontFamily: "montessarat",
+                      ),
                     ),
                   ),
                   FlatButton(
-                    textColor: Theme.of(context).primaryColor,
+                    padding: EdgeInsets.all(15),
+                    textColor: Colors.lightGreen,
                     onPressed: _presentdatepicker,
                     child: Text(
-                      "choose date",
+                      "CHOOSE DATE",
                       style: TextStyle(
+                        fontFamily: "montessarat",
                         fontWeight: FontWeight.bold,
+                        fontSize: 15,
                       ),
                     ),
                   ),
                 ],
               ),
             ),
+            SizedBox(
+              height: 40,
+            ),
             RaisedButton(
-              color: Theme.of(context).primaryColor,
+              padding: EdgeInsets.all(20),
+              color: Colors.lightGreen,
               onPressed: add,
-              child: Text("ADD MEDICINE"),
-              textColor: Colors.white,
+              child: Text(
+                "ADD MEDICINE",
+                style: TextStyle(
+                  fontFamily: "montessarat",
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              textColor: Colors.black,
             ),
           ],
         ),

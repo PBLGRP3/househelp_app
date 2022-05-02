@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:househelp_app/models/medicine.dart';
 import 'package:sticky_grouped_list/sticky_grouped_list.dart';
+import '../notification_service.dart';
 
 class medicine_list_view extends StatelessWidget {
   final List<medicine> _medi_list;
@@ -57,6 +58,12 @@ class medicine_list_view extends StatelessWidget {
       ),
       itemBuilder: (_, medicine element) {
         if (element.expiry_date.difference(DateTime.now()).inDays > 0) {
+          if (element.expiry_date.difference(DateTime.now()).inDays == 1) {
+            NotificationAPI.showNotification(
+                title: "EXPIRED",
+                body: "medicine has expired",
+                payload: "data");
+          }
           return Card(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12.0),
@@ -88,7 +95,7 @@ class medicine_list_view extends StatelessWidget {
                   ),
                 ),
                 trailing: Text(
-                  "no day",
+                  "SAFE",
                   //'${element.add_date.day}',
                   style: TextStyle(
                     color: Colors.black,
