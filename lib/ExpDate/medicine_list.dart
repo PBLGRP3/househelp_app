@@ -122,7 +122,12 @@ class medicine_list_view extends StatelessWidget {
                     EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
                 leading: Padding(
                   padding: const EdgeInsets.only(right: 40.0),
-                  child: Text(
+                  child: Icon(
+                    Icons.dangerous,
+                    color: Colors.red,
+                    size: 40,
+                  ),
+                  /* Text(
                     "${element.expiry_date.difference(DateTime.now()).inDays}",
                     style: TextStyle(
                       color: Colors.red,
@@ -130,7 +135,7 @@ class medicine_list_view extends StatelessWidget {
                       fontFamily: "montessarat",
                       fontWeight: FontWeight.bold,
                     ),
-                  ),
+                  ),*/
                 ),
                 title: Text(
                   element.name,
@@ -153,7 +158,6 @@ class medicine_list_view extends StatelessWidget {
               ),
             ),
           );
-          ;
         }
       },
     );

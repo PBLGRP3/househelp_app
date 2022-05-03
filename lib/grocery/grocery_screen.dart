@@ -31,6 +31,7 @@ class _groceryscreenState extends State<groceryscreen> {
         addtime: DateTime.parse(
           prodData["addtime"],
         ),
+        quantity: prodData["quantity"],
       ));
 
       //print("out successfully");

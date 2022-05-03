@@ -58,6 +58,7 @@ class grocery_list_view extends StatelessWidget {
         ),
       ),
       itemBuilder: (_, grocery element) {
+        print(element.quantity);
         return Card(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12.0),
@@ -71,7 +72,7 @@ class grocery_list_view extends StatelessWidget {
               leading: Padding(
                 padding: const EdgeInsets.only(right: 40.0),
                 child: Text(
-                  "${DateTime.now().difference(element.addtime).inDays}",
+                  "${element.quantity}",
                   style: TextStyle(
                     color: Colors.lightGreen,
                     fontSize: 30,
@@ -89,8 +90,8 @@ class grocery_list_view extends StatelessWidget {
                 ),
               ),
               trailing: Text(
-                "${element.quantity}",
-                //'${element.add_date.day}',
+                "${element.addtime.day.toString()}/${element.addtime.month.toString()}/${element.addtime.year.toString()}",
+                //'${element.add_date.day}',DateTime.now().difference(element.addtime).inDays
                 style: TextStyle(
                   color: Colors.black,
                   fontFamily: "montessarat",
